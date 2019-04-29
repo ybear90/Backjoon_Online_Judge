@@ -15,6 +15,7 @@
 # Input A, B, C, N values
 A, B, C, N = map(int, input().split())
 
+# A, B, C, N conditions
 while (A < 1 or B < A or B > C or C > 50) or N > 300:
     A, B, C, N = map(int, input().split())
 
@@ -25,20 +26,20 @@ def is_possible(A, B, C, N):
         return 1
     else:
         # Two trial
-        for i in range(1, N // C):
-            for j in range(1, N // A):
+        for i in range(1, N // C + 1):
+            for j in range(1, N // A + 1):
                 if (C * i + B * j == N) or (C * i + A * j == N):
                     return 1
 
-        for i in range(1, N // B):
-            for j in range(1, N // A):
+        for i in range(1, N // B + 1):
+            for j in range(1, N // A + 1):
                 if B * i + A * j == N:
                     return 1
 
         # Three trial
-        for i in range(1, N // C):
-            for j in range(1, N // B):
-                for k in range(1, N // A):
+        for i in range(1, N // C + 1):
+            for j in range(1, N // B + 1):
+                for k in range(1, N // A + 1):
                     if A * k + B * j + C * i == N:
                         return 1
     return 0
